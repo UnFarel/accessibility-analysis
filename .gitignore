@@ -1,0 +1,8 @@
+ip_env/
+__pycache__/
+*.pyc
+*.ipynb_checkpoints
+.ip_env
+.secrets.json
+data/
+!data/README.md
