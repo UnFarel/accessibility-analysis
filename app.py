@@ -12,7 +12,7 @@ st.set_page_config(layout="wide")
 
 @st.cache_data
 def load_data():
-    sports = gpd.read_file("backend/data/processed/sport_all.geojson")
+    sports = gpd.read_file("data/processed/sport_all.geojson")
     sports = sports[pd.notnull(sports["global_id"])].copy()
     sports["global_id"] = sports["global_id"].astype(int)
     return sports.to_crs("EPSG:4326")
