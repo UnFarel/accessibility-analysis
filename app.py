@@ -22,7 +22,7 @@ def load_data():
 sports = load_data()
 load_dotenv()
 
-BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:5000")
+BACKEND_URL = os.environ.get("BACKEND_URL")
 
 
 def draw_map():
