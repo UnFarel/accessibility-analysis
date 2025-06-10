@@ -5,19 +5,23 @@ import geopandas as gpd
 import pandas as pd
 import requests
 from shapely.geometry import Point
+from dotenv import load_dotenv
 
 st.set_page_config(layout="wide")
 
 
 @st.cache_data
 def load_data():
-    sports = gpd.read_file("data/processed/sport_all.geojson")
+    sports = gpd.read_file("backend/data/processed/sport_all.geojson")
     sports = sports[pd.notnull(sports["global_id"])].copy()
     sports["global_id"] = sports["global_id"].astype(int)
-    return sports.to_crs("EPSG:4326")  # 🔁 Больше нет ограничения на sample(10)
+    return sports.to_crs("EPSG:4326")
 
 
 sports = load_data()
+load_dotenv()
+
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:5000")
 
 
 def draw_map():
@@ -61,7 +65,7 @@ if map_output and map_output.get("last_clicked"):
 
     try:
         response = requests.get(
-            f"http://localhost:5000/predict?sport_id={gid}")
+            f"{BACKEND_URL}/predict?sport_id={gid}")
         result = response.json()
 
         if not isinstance(result, dict):

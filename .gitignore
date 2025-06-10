@@ -6,3 +6,4 @@ __pycache__/
 .secrets.json
 data/raw/
 !data/README.md
+.env
