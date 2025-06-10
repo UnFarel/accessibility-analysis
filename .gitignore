@@ -4,5 +4,5 @@ __pycache__/
 *.ipynb_checkpoints
 .ip_env
 .secrets.json
-data/
+data/raw/
 !data/README.md
