@@ -4,6 +4,7 @@ import folium
 import geopandas as gpd
 import pandas as pd
 import requests
+import os
 from shapely.geometry import Point
 from dotenv import load_dotenv
 
