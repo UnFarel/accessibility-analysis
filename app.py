@@ -22,8 +22,6 @@ def load_data():
 sports = load_data()
 load_dotenv()
 
-BACKEND_URL = os.environ.get("BACKEND_URL")
-
 
 def draw_map():
     m = folium.Map(location=[55.75, 37.6], zoom_start=11, control_scale=True)
@@ -66,7 +64,7 @@ if map_output and map_output.get("last_clicked"):
 
     try:
         response = requests.get(
-            f"{BACKEND_URL}/predict?sport_id={gid}")
+            f"https://app-back-bk00.onrender.com/predict?sport_id={gid}")
         result = response.json()
 
         if not isinstance(result, dict):
