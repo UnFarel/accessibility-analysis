@@ -57,8 +57,7 @@ def draw_map(clicked_gid=None, result=None, visible_sports=None):
             fill=True,
             fill_color=color,
             fill_opacity=0.8,
-            tooltip=f"ID: {gid}",
-            popup=folium.Popup(f"ID: {gid}")  # ❗️ Это нужно для click_data
+            tooltip=f"ID: {gid}"
         ).add_to(sport_layer)
 
     if result and clicked_gid:
@@ -104,16 +103,8 @@ def draw_map(clicked_gid=None, result=None, visible_sports=None):
     return m
 
 
-# === ОТРИСОВКА ПЕРВОЙ КАРТЫ ===
-click_data = st_folium(
-    draw_map(),
-    width=1400,
-    height=800,
-    returned_objects=["last_clicked"],  # обязательно
-)
-
-# === ОТЛАДКА ===
-st.write("📍 DEBUG click_data:", click_data)
+# === ПЕРВАЯ ОТРИСОВКА КАРТЫ ===
+click_data = st_folium(draw_map(), width=1400, height=800)
 
 # === ОБРАБОТКА КЛИКА ===
 if click_data and click_data.get("last_clicked"):
@@ -135,7 +126,7 @@ if click_data and click_data.get("last_clicked"):
             f"http://localhost:5000/predict?sport_id={gid}")
         result = response.json()
 
-        st.write("🔎 Ответ от API:", result)
+        st.write("🔎 Ответ от API:", result)  # лог для отладки
 
         if not isinstance(result, dict):
             st.error("❌ API вернул неожиданный формат (не словарь).")
