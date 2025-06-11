@@ -6,7 +6,7 @@
 ---
 
 📍 При запуске отобразится карта Москвы с точками спортивных объектов.
-      ССЫЛКА: https://share.streamlit.io/deploy
+      ССЫЛКА: [https://share.streamlit.io/deploy](https://accessibility-analysis-dwgzvlss37ab7srjt3hynf.streamlit.app/)
 
 ---
 
